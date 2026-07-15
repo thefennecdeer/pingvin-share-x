@@ -235,6 +235,7 @@ export default {
   "account.reverseShare.expires-on":
     "This reverse share will expire on {expiration}.",
 
+  "account.reverseShares.table.name": "Name",
   "account.reverseShares.table.no-shares": "No shares created yet",
   "account.reverseShares.table.count.singular": "share",
   "account.reverseShares.table.count.plural": "shares",

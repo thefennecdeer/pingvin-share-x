@@ -60,6 +60,7 @@ export class ReverseShareService {
         simplified: data.simplified,
         publicAccess: data.publicAccess,
         creatorId,
+        name: data.name
       },
     });
 

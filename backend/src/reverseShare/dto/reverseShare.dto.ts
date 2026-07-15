@@ -21,4 +21,8 @@ export class ReverseShareDTO {
       excludeExtraneousValues: true,
     });
   }
+
+  @Expose()
+  name?: string;
+
 }

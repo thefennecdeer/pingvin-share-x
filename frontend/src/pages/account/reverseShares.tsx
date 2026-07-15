@@ -108,6 +108,9 @@ const MyShares = () => {
             <thead>
               <tr>
                 <th>
+                  <FormattedMessage id="account.reverseShares.table.name" />
+                </th>
+                <th>
                   <FormattedMessage id="account.reverseShares.table.shares" />
                 </th>
                 <th>
@@ -127,9 +130,13 @@ const MyShares = () => {
                 <tr key={reverseShare.id}>
                   <td style={{ width: 220 }}>
                     {reverseShare.shares.length == 0 ? (
-                      <Text color="dimmed" size="sm">
-                        <FormattedMessage id="account.reverseShares.table.no-shares" />
-                      </Text>
+                      
+                      reverseShare.name ? 
+                          (reverseShare.name) : (
+                             <Text color="dimmed" size="sm">
+                              Unnamed Share
+                              </Text>)
+                      
                     ) : (
                       <Accordion>
                         <Accordion.Item
@@ -138,13 +145,12 @@ const MyShares = () => {
                         >
                           <Accordion.Control p={0}>
                             <Text size="sm">
-                              {reverseShare.shares.length == 1
-                                ? `1 ${t(
-                                    "account.reverseShares.table.count.singular",
-                                  )}`
-                                : `${reverseShare.shares.length} ${t(
-                                    "account.reverseShares.table.count.plural",
-                                  )}`}
+                              {reverseShare.name ? 
+                                (reverseShare.name) : (
+                                  <Text color="dimmed" size="sm">
+                                    Unnamed Share
+                                  </Text>
+                                )}
                             </Text>
                           </Accordion.Control>
                           <Accordion.Panel>
@@ -196,6 +202,21 @@ const MyShares = () => {
                         </Accordion.Item>
                       </Accordion>
                     )}
+                  </td>
+                  <td>
+                    {reverseShare.shares.length == 0 ? (
+                      <Text color="dimmed" size="sm">
+                        <FormattedMessage id="account.reverseShares.table.no-shares" />
+                      </Text>
+                    ) : (
+                      reverseShare.shares.length == 1
+                        ? `1 ${t(
+                          "account.reverseShares.table.count.singular",
+                          )}`
+                        : `${reverseShare.shares.length} ${t(
+                          "account.reverseShares.table.count.plural",
+                          )}`
+                        )}
                   </td>
                   <td>{reverseShare.remainingUses}</td>
                   <td>

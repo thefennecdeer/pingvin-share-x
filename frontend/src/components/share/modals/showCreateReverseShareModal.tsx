@@ -8,6 +8,7 @@ import {
   Stack,
   Switch,
   Text,
+  TextInput
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
@@ -94,6 +95,7 @@ const Body = ({
       expiration_unit: `-${defaultTimespan.unit}` as string,
       simplified: !reverseShareSimpleOnly ? false : !!(getCookie("reverse-share.simplified") ?? false),
       publicAccess: !!(getCookie("reverse-share.public-access") ?? true),
+      name: undefined
     },
     validate: yupResolver(
       yup.object().shape({
@@ -113,6 +115,13 @@ const Body = ({
             }),
           )
           .required(t("common.error.field-required")),
+        name: yup
+            .string()
+            .transform((value) => value || undefined)
+            .min(3, t("common.error.too-short", { length: 3 }))
+            .max(30, t("common.error.too-long", { length: 30 }))
+            .required(t("common.error.field-required"))
+            
       }),
     ),
   });
@@ -154,6 +163,7 @@ const Body = ({
         values.sendEmailNotification,
         values.simplified,
         values.publicAccess,
+        values.name,
       )
       .then(({ token }) => {
         modals.closeAll();
@@ -167,6 +177,14 @@ const Body = ({
     <Group>
       <form onSubmit={onSubmit}>
         <Stack align="stretch">
+          <TextInput
+                        variant="filled"
+                        label="Name"
+                        placeholder={t(
+                          "Name",
+                        )}
+                        {...form.getInputProps("name")}
+                      />
           <div>
             <Grid align={form.errors.expiration_num ? "center" : "flex-end"}>
               <Col xs={6}>
