@@ -154,9 +154,15 @@ const MyShares = () => {
                                   href={`${appUrl !== defaultAppUrl ? appUrl : window.location.origin}/share/${share.id}`}
                                   target="_blank"
                                 >
-                                  <Text maw={120} truncate>
+                                  {share.name ? (
+                                    <Text maw={120} truncate>
+                                    {share.name}
+                                  </Text>
+                                  ) : (
+                                    <Text maw={120} truncate>
                                     {share.id}
                                   </Text>
+                                  )}
                                 </Anchor>
                                 <HoverTip label={t("common.button.copy-link")}>
                                   <ActionIcon
