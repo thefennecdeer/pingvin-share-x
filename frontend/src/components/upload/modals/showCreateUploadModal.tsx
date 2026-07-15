@@ -501,12 +501,13 @@ const SimplifiedCreateUploadModalModal = ({
   const modals = useModals();
   const t = useTranslate();
 
-  const [showNotSignedInAlert, setShowNotSignedInAlert] = useState(true);
+  // const [showNotSignedInAlert, setShowNotSignedInAlert] = useState(true);
 
   const validationSchema = yup.object().shape({
     name: yup
       .string()
       .transform((value) => value || undefined)
+      .required(t("common.error.field-required"))
       .min(3, t("common.error.too-short", { length: 3 }))
       .max(30, t("common.error.too-long", { length: 30 })),
   });
