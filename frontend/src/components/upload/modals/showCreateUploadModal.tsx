@@ -550,7 +550,11 @@ const SimplifiedCreateUploadModalModal = ({
 
   return (
     <Stack>
-      {showNotSignedInAlert && !options.isUserSignedIn && (
+      {/*
+      
+      hide alert for reverse shares
+
+       {showNotSignedInAlert && !options.isUserSignedIn && (
         <Alert
           withCloseButton
           onClose={() => setShowNotSignedInAlert(false)}
@@ -560,7 +564,9 @@ const SimplifiedCreateUploadModalModal = ({
         >
           <FormattedMessage id="upload.modal.not-signed-in-description" />
         </Alert>
-      )}
+      )} 
+      
+       */}
       <form onSubmit={onSubmit}>
         <Stack align="stretch">
           <Stack align="stretch">
