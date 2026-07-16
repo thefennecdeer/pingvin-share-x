@@ -1,3 +1,9 @@
+## [1.23.0](https://github.com/thefennecdeer/pingvin-share-x/compare/v1.22.0...v1.23.0) (2026-07-16)
+
+### Bug Fixes
+
+* **reverseShare:** backend db migrate ([ea35e0d](https://github.com/thefennecdeer/pingvin-share-x/commit/ea35e0d0b4fd094f64c41740b4990eef848cedb9))
+
 ## 1.22.0 (2026-07-15)
 
 ### ⚠ BREAKING CHANGES
